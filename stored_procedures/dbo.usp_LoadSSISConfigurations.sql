@@ -25,7 +25,7 @@ Ver      Date        Author           Description
 -------  ----------  ---------------  ------------------------------------------------------------------------
 1.0      11/03/2019  JJAUSSI          1. Created this process for LDS BC IT243
 1.1      02/25/2021  JSANCHEZ         2. Added conn_DFNB3 Connection Configuration
-
+1.2      02/25/2021  JSANCHEZ         3. Added LoadDFNB3_js Configuration 
 
 
 RUNTIME: 
