@@ -12,8 +12,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="LoadDFNB3_js"
   DTS:PackageType="5"
-  DTS:VersionBuild="64"
-  DTS:VersionGUID="{D406FCAA-E2E9-443A-A545-24419FAB14DC}">
+  DTS:VersionBuild="65"
+  DTS:VersionGUID="{21077773-BF34-44F5-A09D-F04D81A66F24}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -9315,7 +9315,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <AnnotationLayout
-          Text="/*****************************************************************************************************************&#xD;&#xA;NAME:    LoadDFNB3.dtsx&#xD;&#xA;PURPOSE: Load the DNFB3 Data Warehouse&#xD;&#xA;&#xD;&#xA;MODIFICATION LOG:&#xD;&#xA;Ver      Date        Author           Description&#xD;&#xA;-------  ----------  ---------------  ------------------------------------------------------------------------&#xD;&#xA;1.0      11/03/2019  JJAUSSI          1. Created this process for LDS BC IT243&#xD;&#xA;1.1      02/25/2021  JSANCHEZ     2. Added conn_DFNB3 Connection Configuration&#xD;&#xA;1.2      02/25/2021  JSANCHEZ     3. Added LoadDFNB3_js Configuration &#xD;&#xA;1.3      03/01/2021  JSANCHEZ     4.  Changed  the name of data flow task in Foreach Loop Container&#xD;&#xA;"
+          Text="/*****************************************************************************************************************&#xA;NAME:    LoadDFNB3.dtsx&#xA;PURPOSE: Load the DNFB3 Data Warehouse&#xA;&#xA;MODIFICATION LOG:&#xA;Ver      Date        Author           Description&#xA;-------  ----------  ---------------  ------------------------------------------------------------------------&#xA;1.0      11/03/2019  JJAUSSI          1. Created this process for LDS BC IT243.&#xA;1.1      02/25/2021  JSANCHEZ     2. Added conn_DFNB3 Connection Configuration.&#xA;1.2      02/25/2021  JSANCHEZ     3. Added LoadDFNB3_js Configuration.&#xA;1.3      03/01/2021  JSANCHEZ     4.  Changed  the name of data flow task in Foreach Loop Container.&#xA;"
           ParentId="Package\Documentation"
           FontInfo="{assembly:Null}"
           Size="599.2,215.2"
