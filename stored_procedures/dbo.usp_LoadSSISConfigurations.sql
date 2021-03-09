@@ -26,6 +26,7 @@ Ver      Date        Author           Description
 1.0      11/03/2019  JJAUSSI          1. Created this process for LDS BC IT243
 1.1      02/25/2021  JSANCHEZ         2. Added conn_DFNB3 Connection Configuration
 1.2      02/25/2021  JSANCHEZ         3. Added LoadDFNB3_js Configuration 
+1.3      03/08/2021  JSANCHEZ		  4. Added LoadEXM_js configuration
 
 
 RUNTIME: 
@@ -160,6 +161,26 @@ SELECT c.*
           (
            'LoadDFNB3_js'
 		 , 'C:\Users\jared\Desktop\LDSBC 2\OneDrive - Ensign College\Winter 2021\IT 243\week 01\DFNB\DFNB_src\txt_files\'
+         , '\Package.Variables[User::v_data_share_root].Properties[Value]'
+         , 'String'
+          );
+
+	-- 3.3) LoadEXM_js
+
+    DELETE FROM dbo.[SSIS Configurations]
+     WHERE ConfigurationFilter = 'LoadEXM_js';
+	
+
+	-- 3.3.1) v_data_share_root
+
+    INSERT INTO dbo.[SSIS Configurations](ConfigurationFilter
+                                        , ConfiguredValue
+                                        , PackagePath
+                                        , ConfiguredValueType)
+    VALUES
+          (
+           'LoadEXM_js'
+		 , 'C:\Users\jared\Desktop\LDSBC 2\OneDrive - Ensign College\Winter 2021\IT 243\week 01\EXM\EXM\txt_files'
          , '\Package.Variables[User::v_data_share_root].Properties[Value]'
          , 'String'
           );
