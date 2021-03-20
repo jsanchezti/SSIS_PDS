@@ -12,8 +12,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="LoadEXM_js"
   DTS:PackageType="5"
-  DTS:VersionBuild="33"
-  DTS:VersionGUID="{D5ED48CE-1BF6-491D-8345-ABB2FDCB97AF}">
+  DTS:VersionBuild="34"
+  DTS:VersionGUID="{31EB5E73-CA69-414C-88B7-288FD849C46F}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -2232,7 +2232,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
         <NodeLayout
           Size="166.4,41.6"
           Id="Package\Parent Container\Data Profiling Task"
-          TopLeft="183.799985098839,165.933335847325" />
+          TopLeft="182.96665179862,165.933335847325" />
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
