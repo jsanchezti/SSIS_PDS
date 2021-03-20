@@ -12,8 +12,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="LoadDFNB3_js"
   DTS:PackageType="5"
-  DTS:VersionBuild="106"
-  DTS:VersionGUID="{2ECEC751-F3CD-460B-89B9-B299014F7507}">
+  DTS:VersionBuild="114"
+  DTS:VersionGUID="{83F17936-F248-451F-849E-E537D28BA858}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -1679,6 +1679,630 @@ ORDER BY 3,4,5;</DTS:VariableValue>
       <DTS:Variables />
       <DTS:Executables>
         <DTS:Executable
+          DTS:refId="Package\Parent Container\Branch Tran File breakout"
+          DTS:CreationName="STOCK:SEQUENCE"
+          DTS:Description="Sequence Container"
+          DTS:Disabled="True"
+          DTS:DTSID="{751367D0-91A4-4C74-87AD-21A61B47A2BD}"
+          DTS:ExecutableType="STOCK:SEQUENCE"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Branch Tran File breakout">
+          <DTS:Variables />
+          <DTS:Executables>
+            <DTS:Executable
+              DTS:refId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container"
+              DTS:CreationName="STOCK:FOREACHLOOP"
+              DTS:Description="Foreach Loop Container"
+              DTS:DTSID="{1E6A2256-EA5E-40BE-89AC-9E17E922DA6F}"
+              DTS:ExecutableType="STOCK:FOREACHLOOP"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Foreach Loop Container">
+              <DTS:ForEachEnumerator
+                DTS:CreationName="Microsoft.ForEachADOEnumerator"
+                DTS:DTSID="{E1B7ECF6-A9FA-4F18-9167-DBF3C0BDD70F}"
+                DTS:ObjectName="{E1B7ECF6-A9FA-4F18-9167-DBF3C0BDD70F}">
+                <DTS:ObjectData>
+                  <FEEADO
+                    EnumType="EnumerateRowsInFirstTable"
+                    VarName="User::o_tran_year" />
+                </DTS:ObjectData>
+              </DTS:ForEachEnumerator>
+              <DTS:Variables />
+              <DTS:Executables>
+                <DTS:Executable
+                  DTS:refId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task"
+                  DTS:CreationName="Microsoft.Pipeline"
+                  DTS:Description="Data Flow Task"
+                  DTS:DTSID="{B132C75F-D1FE-4895-ACB2-A4F89CAB06C7}"
+                  DTS:ExecutableType="Microsoft.Pipeline"
+                  DTS:LocaleID="-1"
+                  DTS:ObjectName="Data Flow Task"
+                  DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+                  <DTS:Variables />
+                  <DTS:ObjectData>
+                    <pipeline
+                      version="1">
+                      <components>
+                        <component
+                          refId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\Flat File Destination"
+                          componentClassID="Microsoft.FlatFileDestination"
+                          contactInfo="Flat File Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                          description="Flat File Destination"
+                          localeId="1033"
+                          name="Flat File Destination"
+                          version="1">
+                          <properties>
+                            <property
+                              dataType="System.Boolean"
+                              description="Specifies whether the data will overwrite or append to the destination file."
+                              name="Overwrite">true</property>
+                            <property
+                              dataType="System.Null"
+                              description="Specifies the text to write to the destination file before any data is written."
+                              expressionType="Notify"
+                              name="Header" />
+                            <property
+                              dataType="System.Boolean"
+                              description="When text qualifier is enabled, specifies whether the text qualifier in the data written to the destination file will be escaped or not."
+                              name="EscapeQualifier">false</property>
+                          </properties>
+                          <connections>
+                            <connection
+                              refId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\Flat File Destination.Connections[FlatFileConnection]"
+                              connectionManagerID="Package.ConnectionManagers[BRANCH_TRAN_YYYY.txt]"
+                              connectionManagerRefId="Package.ConnectionManagers[BRANCH_TRAN_YYYY.txt]"
+                              name="FlatFileConnection" />
+                          </connections>
+                          <inputs>
+                            <input
+                              refId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\Flat File Destination.Inputs[Flat File Destination Input]"
+                              hasSideEffects="true"
+                              name="Flat File Destination Input">
+                              <inputColumns>
+                                <inputColumn
+                                  refId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\Flat File Destination.Inputs[Flat File Destination Input].Columns[branch_id]"
+                                  cachedDataType="i2"
+                                  cachedName="branch_id"
+                                  externalMetadataColumnId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[branch_id]"
+                                  lineageId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[branch_id]" />
+                                <inputColumn
+                                  refId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\Flat File Destination.Inputs[Flat File Destination Input].Columns[acct_id]"
+                                  cachedDataType="i4"
+                                  cachedName="acct_id"
+                                  externalMetadataColumnId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[acct_id]"
+                                  lineageId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[acct_id]" />
+                                <inputColumn
+                                  refId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\Flat File Destination.Inputs[Flat File Destination Input].Columns[tran_date]"
+                                  cachedDataType="dbDate"
+                                  cachedName="tran_date"
+                                  externalMetadataColumnId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[tran_date]"
+                                  lineageId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[tran_date]" />
+                                <inputColumn
+                                  refId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\Flat File Destination.Inputs[Flat File Destination Input].Columns[tran_time]"
+                                  cachedDataType="dbTime2"
+                                  cachedName="tran_time"
+                                  cachedScale="7"
+                                  externalMetadataColumnId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[tran_time]"
+                                  lineageId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[tran_time]" />
+                                <inputColumn
+                                  refId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\Flat File Destination.Inputs[Flat File Destination Input].Columns[tran_type_id]"
+                                  cachedDataType="i2"
+                                  cachedName="tran_type_id"
+                                  externalMetadataColumnId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[tran_type_id]"
+                                  lineageId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[tran_type_id]" />
+                                <inputColumn
+                                  refId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\Flat File Destination.Inputs[Flat File Destination Input].Columns[tran_type_code]"
+                                  cachedCodepage="1252"
+                                  cachedDataType="str"
+                                  cachedLength="5"
+                                  cachedName="tran_type_code"
+                                  externalMetadataColumnId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[tran_type_code]"
+                                  lineageId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[tran_type_code]" />
+                                <inputColumn
+                                  refId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\Flat File Destination.Inputs[Flat File Destination Input].Columns[tran_type_desc]"
+                                  cachedCodepage="1252"
+                                  cachedDataType="str"
+                                  cachedLength="100"
+                                  cachedName="tran_type_desc"
+                                  externalMetadataColumnId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[tran_type_desc]"
+                                  lineageId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[tran_type_desc]" />
+                                <inputColumn
+                                  refId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\Flat File Destination.Inputs[Flat File Destination Input].Columns[tran_fee_prct]"
+                                  cachedDataType="numeric"
+                                  cachedName="tran_fee_prct"
+                                  cachedPrecision="4"
+                                  cachedScale="3"
+                                  externalMetadataColumnId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[tran_fee_prct]"
+                                  lineageId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[tran_fee_prct]" />
+                                <inputColumn
+                                  refId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\Flat File Destination.Inputs[Flat File Destination Input].Columns[cur_cust_req_ind]"
+                                  cachedCodepage="1252"
+                                  cachedDataType="str"
+                                  cachedLength="1"
+                                  cachedName="cur_cust_req_ind"
+                                  externalMetadataColumnId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[cur_cust_req_ind]"
+                                  lineageId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[cur_cust_req_ind]" />
+                                <inputColumn
+                                  refId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\Flat File Destination.Inputs[Flat File Destination Input].Columns[tran_amt]"
+                                  cachedDataType="i4"
+                                  cachedName="tran_amt"
+                                  externalMetadataColumnId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[tran_amt]"
+                                  lineageId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[tran_amt]" />
+                                <inputColumn
+                                  refId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\Flat File Destination.Inputs[Flat File Destination Input].Columns[tran_fee_amt]"
+                                  cachedDataType="numeric"
+                                  cachedName="tran_fee_amt"
+                                  cachedPrecision="15"
+                                  cachedScale="3"
+                                  externalMetadataColumnId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[tran_fee_amt]"
+                                  lineageId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[tran_fee_amt]" />
+                              </inputColumns>
+                              <externalMetadataColumns
+                                isUsed="True">
+                                <externalMetadataColumn
+                                  refId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[branch_id]"
+                                  dataType="i2"
+                                  name="branch_id" />
+                                <externalMetadataColumn
+                                  refId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[acct_id]"
+                                  dataType="i4"
+                                  name="acct_id" />
+                                <externalMetadataColumn
+                                  refId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[tran_date]"
+                                  dataType="dbDate"
+                                  name="tran_date" />
+                                <externalMetadataColumn
+                                  refId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[tran_time]"
+                                  dataType="dbTime2"
+                                  name="tran_time"
+                                  scale="7" />
+                                <externalMetadataColumn
+                                  refId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[tran_type_id]"
+                                  dataType="i2"
+                                  name="tran_type_id" />
+                                <externalMetadataColumn
+                                  refId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[tran_type_code]"
+                                  codePage="1252"
+                                  dataType="str"
+                                  length="5"
+                                  name="tran_type_code" />
+                                <externalMetadataColumn
+                                  refId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[tran_type_desc]"
+                                  codePage="1252"
+                                  dataType="str"
+                                  length="100"
+                                  name="tran_type_desc" />
+                                <externalMetadataColumn
+                                  refId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[tran_fee_prct]"
+                                  dataType="numeric"
+                                  name="tran_fee_prct"
+                                  precision="4"
+                                  scale="3" />
+                                <externalMetadataColumn
+                                  refId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[cur_cust_req_ind]"
+                                  codePage="1252"
+                                  dataType="str"
+                                  length="1"
+                                  name="cur_cust_req_ind" />
+                                <externalMetadataColumn
+                                  refId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[tran_amt]"
+                                  dataType="i4"
+                                  name="tran_amt" />
+                                <externalMetadataColumn
+                                  refId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[tran_fee_amt]"
+                                  dataType="numeric"
+                                  name="tran_fee_amt"
+                                  precision="15"
+                                  scale="3" />
+                              </externalMetadataColumns>
+                            </input>
+                          </inputs>
+                        </component>
+                        <component
+                          refId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\OLE DB Source"
+                          componentClassID="Microsoft.OLEDBSource"
+                          contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                          description="OLE DB Source"
+                          name="OLE DB Source"
+                          usesDispositions="true"
+                          version="7">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                              name="CommandTimeout">0</property>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the name of the database object used to open a rowset."
+                              name="OpenRowset"></property>
+                            <property
+                              dataType="System.String"
+                              description="Specifies the variable that contains the name of the database object used to open a rowset."
+                              name="OpenRowsetVariable"></property>
+                            <property
+                              dataType="System.String"
+                              description="The SQL command to be executed."
+                              name="SqlCommand"
+                              UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                            <property
+                              dataType="System.String"
+                              description="The variable that contains the SQL command to be executed."
+                              name="SqlCommandVariable">User::v_sql</property>
+                            <property
+                              dataType="System.Int32"
+                              description="Specifies the column code page to use when code page information is unavailable from the data source."
+                              name="DefaultCodePage">1252</property>
+                            <property
+                              dataType="System.Boolean"
+                              description="Forces the use of the DefaultCodePage property value when describing character data."
+                              name="AlwaysUseDefaultCodePage">false</property>
+                            <property
+                              dataType="System.Int32"
+                              description="Specifies the mode used to access the database."
+                              name="AccessMode"
+                              typeConverter="AccessMode">3</property>
+                            <property
+                              dataType="System.String"
+                              description="The mappings between the parameters in the SQL command and variables."
+                              name="ParameterMapping"></property>
+                          </properties>
+                          <connections>
+                            <connection
+                              refId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\OLE DB Source.Connections[OleDbConnection]"
+                              connectionManagerID="Package.ConnectionManagers[DFNB3]"
+                              connectionManagerRefId="Package.ConnectionManagers[DFNB3]"
+                              description="The OLE DB runtime connection used to access the database."
+                              name="OleDbConnection" />
+                          </connections>
+                          <outputs>
+                            <output
+                              refId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output]"
+                              name="OLE DB Source Output">
+                              <outputColumns>
+                                <outputColumn
+                                  refId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[branch_id]"
+                                  dataType="i2"
+                                  errorOrTruncationOperation="Conversion"
+                                  errorRowDisposition="FailComponent"
+                                  externalMetadataColumnId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[branch_id]"
+                                  lineageId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[branch_id]"
+                                  name="branch_id"
+                                  truncationRowDisposition="FailComponent" />
+                                <outputColumn
+                                  refId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[acct_id]"
+                                  dataType="i4"
+                                  errorOrTruncationOperation="Conversion"
+                                  errorRowDisposition="FailComponent"
+                                  externalMetadataColumnId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[acct_id]"
+                                  lineageId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[acct_id]"
+                                  name="acct_id"
+                                  truncationRowDisposition="FailComponent" />
+                                <outputColumn
+                                  refId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[tran_date]"
+                                  dataType="dbDate"
+                                  errorOrTruncationOperation="Conversion"
+                                  errorRowDisposition="FailComponent"
+                                  externalMetadataColumnId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[tran_date]"
+                                  lineageId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[tran_date]"
+                                  name="tran_date"
+                                  truncationRowDisposition="FailComponent" />
+                                <outputColumn
+                                  refId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[tran_time]"
+                                  dataType="dbTime2"
+                                  errorOrTruncationOperation="Conversion"
+                                  errorRowDisposition="FailComponent"
+                                  externalMetadataColumnId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[tran_time]"
+                                  lineageId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[tran_time]"
+                                  name="tran_time"
+                                  scale="7"
+                                  truncationRowDisposition="FailComponent" />
+                                <outputColumn
+                                  refId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[tran_type_id]"
+                                  dataType="i2"
+                                  errorOrTruncationOperation="Conversion"
+                                  errorRowDisposition="FailComponent"
+                                  externalMetadataColumnId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[tran_type_id]"
+                                  lineageId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[tran_type_id]"
+                                  name="tran_type_id"
+                                  truncationRowDisposition="FailComponent" />
+                                <outputColumn
+                                  refId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[tran_type_code]"
+                                  codePage="1252"
+                                  dataType="str"
+                                  errorOrTruncationOperation="Conversion"
+                                  errorRowDisposition="FailComponent"
+                                  externalMetadataColumnId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[tran_type_code]"
+                                  length="5"
+                                  lineageId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[tran_type_code]"
+                                  name="tran_type_code"
+                                  truncationRowDisposition="FailComponent" />
+                                <outputColumn
+                                  refId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[tran_type_desc]"
+                                  codePage="1252"
+                                  dataType="str"
+                                  errorOrTruncationOperation="Conversion"
+                                  errorRowDisposition="FailComponent"
+                                  externalMetadataColumnId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[tran_type_desc]"
+                                  length="100"
+                                  lineageId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[tran_type_desc]"
+                                  name="tran_type_desc"
+                                  truncationRowDisposition="FailComponent" />
+                                <outputColumn
+                                  refId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[tran_fee_prct]"
+                                  dataType="numeric"
+                                  errorOrTruncationOperation="Conversion"
+                                  errorRowDisposition="FailComponent"
+                                  externalMetadataColumnId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[tran_fee_prct]"
+                                  lineageId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[tran_fee_prct]"
+                                  name="tran_fee_prct"
+                                  precision="4"
+                                  scale="3"
+                                  truncationRowDisposition="FailComponent" />
+                                <outputColumn
+                                  refId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[cur_cust_req_ind]"
+                                  codePage="1252"
+                                  dataType="str"
+                                  errorOrTruncationOperation="Conversion"
+                                  errorRowDisposition="FailComponent"
+                                  externalMetadataColumnId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[cur_cust_req_ind]"
+                                  length="1"
+                                  lineageId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[cur_cust_req_ind]"
+                                  name="cur_cust_req_ind"
+                                  truncationRowDisposition="FailComponent" />
+                                <outputColumn
+                                  refId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[tran_amt]"
+                                  dataType="i4"
+                                  errorOrTruncationOperation="Conversion"
+                                  errorRowDisposition="FailComponent"
+                                  externalMetadataColumnId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[tran_amt]"
+                                  lineageId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[tran_amt]"
+                                  name="tran_amt"
+                                  truncationRowDisposition="FailComponent" />
+                                <outputColumn
+                                  refId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[tran_fee_amt]"
+                                  dataType="numeric"
+                                  errorOrTruncationOperation="Conversion"
+                                  errorRowDisposition="FailComponent"
+                                  externalMetadataColumnId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[tran_fee_amt]"
+                                  lineageId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[tran_fee_amt]"
+                                  name="tran_fee_amt"
+                                  precision="15"
+                                  scale="3"
+                                  truncationRowDisposition="FailComponent" />
+                              </outputColumns>
+                              <externalMetadataColumns
+                                isUsed="True">
+                                <externalMetadataColumn
+                                  refId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[branch_id]"
+                                  dataType="i2"
+                                  name="branch_id" />
+                                <externalMetadataColumn
+                                  refId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[acct_id]"
+                                  dataType="i4"
+                                  name="acct_id" />
+                                <externalMetadataColumn
+                                  refId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[tran_date]"
+                                  dataType="dbDate"
+                                  name="tran_date" />
+                                <externalMetadataColumn
+                                  refId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[tran_time]"
+                                  dataType="dbTime2"
+                                  name="tran_time"
+                                  scale="7" />
+                                <externalMetadataColumn
+                                  refId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[tran_type_id]"
+                                  dataType="i2"
+                                  name="tran_type_id" />
+                                <externalMetadataColumn
+                                  refId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[tran_type_code]"
+                                  codePage="1252"
+                                  dataType="str"
+                                  length="5"
+                                  name="tran_type_code" />
+                                <externalMetadataColumn
+                                  refId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[tran_type_desc]"
+                                  codePage="1252"
+                                  dataType="str"
+                                  length="100"
+                                  name="tran_type_desc" />
+                                <externalMetadataColumn
+                                  refId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[tran_fee_prct]"
+                                  dataType="numeric"
+                                  name="tran_fee_prct"
+                                  precision="4"
+                                  scale="3" />
+                                <externalMetadataColumn
+                                  refId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[cur_cust_req_ind]"
+                                  codePage="1252"
+                                  dataType="str"
+                                  length="1"
+                                  name="cur_cust_req_ind" />
+                                <externalMetadataColumn
+                                  refId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[tran_amt]"
+                                  dataType="i4"
+                                  name="tran_amt" />
+                                <externalMetadataColumn
+                                  refId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[tran_fee_amt]"
+                                  dataType="numeric"
+                                  name="tran_fee_amt"
+                                  precision="15"
+                                  scale="3" />
+                              </externalMetadataColumns>
+                            </output>
+                            <output
+                              refId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                              isErrorOut="true"
+                              name="OLE DB Source Error Output">
+                              <outputColumns>
+                                <outputColumn
+                                  refId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[branch_id]"
+                                  dataType="i2"
+                                  lineageId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[branch_id]"
+                                  name="branch_id" />
+                                <outputColumn
+                                  refId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[acct_id]"
+                                  dataType="i4"
+                                  lineageId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[acct_id]"
+                                  name="acct_id" />
+                                <outputColumn
+                                  refId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[tran_date]"
+                                  dataType="dbDate"
+                                  lineageId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[tran_date]"
+                                  name="tran_date" />
+                                <outputColumn
+                                  refId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[tran_time]"
+                                  dataType="dbTime2"
+                                  lineageId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[tran_time]"
+                                  name="tran_time"
+                                  scale="7" />
+                                <outputColumn
+                                  refId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[tran_type_id]"
+                                  dataType="i2"
+                                  lineageId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[tran_type_id]"
+                                  name="tran_type_id" />
+                                <outputColumn
+                                  refId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[tran_type_code]"
+                                  codePage="1252"
+                                  dataType="str"
+                                  length="5"
+                                  lineageId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[tran_type_code]"
+                                  name="tran_type_code" />
+                                <outputColumn
+                                  refId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[tran_type_desc]"
+                                  codePage="1252"
+                                  dataType="str"
+                                  length="100"
+                                  lineageId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[tran_type_desc]"
+                                  name="tran_type_desc" />
+                                <outputColumn
+                                  refId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[tran_fee_prct]"
+                                  dataType="numeric"
+                                  lineageId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[tran_fee_prct]"
+                                  name="tran_fee_prct"
+                                  precision="4"
+                                  scale="3" />
+                                <outputColumn
+                                  refId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[cur_cust_req_ind]"
+                                  codePage="1252"
+                                  dataType="str"
+                                  length="1"
+                                  lineageId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[cur_cust_req_ind]"
+                                  name="cur_cust_req_ind" />
+                                <outputColumn
+                                  refId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[tran_amt]"
+                                  dataType="i4"
+                                  lineageId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[tran_amt]"
+                                  name="tran_amt" />
+                                <outputColumn
+                                  refId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[tran_fee_amt]"
+                                  dataType="numeric"
+                                  lineageId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[tran_fee_amt]"
+                                  name="tran_fee_amt"
+                                  precision="15"
+                                  scale="3" />
+                                <outputColumn
+                                  refId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                                  dataType="i4"
+                                  lineageId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                                  name="ErrorCode"
+                                  specialFlags="1" />
+                                <outputColumn
+                                  refId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                                  dataType="i4"
+                                  lineageId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                                  name="ErrorColumn"
+                                  specialFlags="2" />
+                              </outputColumns>
+                              <externalMetadataColumns />
+                            </output>
+                          </outputs>
+                        </component>
+                      </components>
+                      <paths>
+                        <path
+                          refId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task.Paths[OLE DB Source Output]"
+                          endId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\Flat File Destination.Inputs[Flat File Destination Input]"
+                          name="OLE DB Source Output"
+                          startId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output]" />
+                      </paths>
+                    </pipeline>
+                  </DTS:ObjectData>
+                </DTS:Executable>
+                <DTS:Executable
+                  DTS:refId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\File System Task"
+                  DTS:CreationName="Microsoft.FileSystemTask"
+                  DTS:Description="File System Task"
+                  DTS:DTSID="{4DD952C6-D11F-4CF1-8100-89F865AE3037}"
+                  DTS:ExecutableType="Microsoft.FileSystemTask"
+                  DTS:LocaleID="-1"
+                  DTS:ObjectName="File System Task"
+                  DTS:TaskContact="File System Task;Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+                  DTS:ThreadHint="3">
+                  <DTS:Variables />
+                  <DTS:ObjectData>
+                    <FileSystemData
+                      TaskOperationType="MoveFile"
+                      TaskOverwriteDestFile="True"
+                      TaskSourcePath="{113583A2-8ADF-45DD-8133-BA37033BE927}"
+                      TaskDestinationPath="User::v_archive_dir"
+                      TaskIsDestinationVariable="True" />
+                  </DTS:ObjectData>
+                </DTS:Executable>
+              </DTS:Executables>
+              <DTS:PrecedenceConstraints>
+                <DTS:PrecedenceConstraint
+                  DTS:refId="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container.PrecedenceConstraints[Constraint]"
+                  DTS:CreationName=""
+                  DTS:DTSID="{E93BE066-2706-419B-BC94-570A545E5524}"
+                  DTS:From="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task"
+                  DTS:LogicalAnd="True"
+                  DTS:ObjectName="Constraint"
+                  DTS:To="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\File System Task" />
+              </DTS:PrecedenceConstraints>
+              <DTS:ForEachVariableMappings>
+                <DTS:ForEachVariableMapping
+                  DTS:CreationName=""
+                  DTS:DTSID="{46571E7E-1C39-4C72-A868-A9182C7AB4ED}"
+                  DTS:ObjectName="{46571E7E-1C39-4C72-A868-A9182C7AB4ED}"
+                  DTS:ValueIndex="0"
+                  DTS:VariableName="User::v_tran_year" />
+              </DTS:ForEachVariableMappings>
+            </DTS:Executable>
+            <DTS:Executable
+              DTS:refId="Package\Parent Container\Branch Tran File breakout\Tran Year list"
+              DTS:CreationName="Microsoft.ExecuteSQLTask"
+              DTS:Description="Execute SQL Task"
+              DTS:DTSID="{E191A78C-981A-44F1-BB90-F2C6B8F18795}"
+              DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Tran Year list"
+              DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+              DTS:ThreadHint="3">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <SQLTask:SqlTaskData
+                  SQLTask:Connection="{8161A392-70CE-4A16-929A-49777845BBB9}"
+                  SQLTask:SqlStatementSource="SELECT DISTINCT CAST(YEAR(s.tran_date) as varchar(4)) as v_tran_year&#xA;FROM dbo.stg_p2 s&#xA;ORDER BY 1;"
+                  SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+                  <SQLTask:ResultBinding
+                    SQLTask:ResultName="0"
+                    SQLTask:DtsVariableName="User::o_tran_year" />
+                </SQLTask:SqlTaskData>
+              </DTS:ObjectData>
+            </DTS:Executable>
+          </DTS:Executables>
+          <DTS:PrecedenceConstraints>
+            <DTS:PrecedenceConstraint
+              DTS:refId="Package\Parent Container\Branch Tran File breakout.PrecedenceConstraints[Constraint]"
+              DTS:CreationName=""
+              DTS:DTSID="{DDF9B27B-1FF6-4649-90D9-46D1329F310A}"
+              DTS:From="Package\Parent Container\Branch Tran File breakout\Tran Year list"
+              DTS:LogicalAnd="True"
+              DTS:ObjectName="Constraint"
+              DTS:To="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container" />
+          </DTS:PrecedenceConstraints>
+        </DTS:Executable>
+        <DTS:Executable
           DTS:refId="Package\Parent Container\Data Profiling Task"
           DTS:CreationName="Microsoft.DataProfilingTask"
           DTS:Description="Data Profiling Task"
@@ -1688,7 +2312,7 @@ ORDER BY 3,4,5;</DTS:VariableValue>
           DTS:LocaleID="-1"
           DTS:ObjectName="Data Profiling Task"
           DTS:TaskContact="Data Profiling Task; Microsoft Corporation; SQL Server 2019; (c) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-          DTS:ThreadHint="2">
+          DTS:ThreadHint="0">
           <DTS:Variables />
           <DTS:ObjectData>
             <DataProfilingTaskData
@@ -1759,6 +2383,35 @@ ORDER BY 3,4,5;</DTS:VariableValue>
           </DTS:ObjectData>
         </DTS:Executable>
         <DTS:Executable
+          DTS:refId="Package\Parent Container\Load dimensions"
+          DTS:CreationName="STOCK:SEQUENCE"
+          DTS:Description="Sequence Container"
+          DTS:DTSID="{35087585-8DD1-4020-AA72-A22755443CBB}"
+          DTS:ExecutableType="STOCK:SEQUENCE"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Load dimensions">
+          <DTS:Variables />
+          <DTS:Executables>
+            <DTS:Executable
+              DTS:refId="Package\Parent Container\Load dimensions\Load Date Dim"
+              DTS:CreationName="Microsoft.ExecuteSQLTask"
+              DTS:Description="Execute SQL Task"
+              DTS:DTSID="{ABB67E89-517C-41CE-8B91-A9AEBFD167A5}"
+              DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+              DTS:LocaleID="-1"
+              DTS:ObjectName="Load Date Dim"
+              DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+              DTS:ThreadHint="1">
+              <DTS:Variables />
+              <DTS:ObjectData>
+                <SQLTask:SqlTaskData
+                  SQLTask:Connection="{8161A392-70CE-4A16-929A-49777845BBB9}"
+                  SQLTask:SqlStatementSource="EXEC dbo.usp_LoadDateDim 91675;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+              </DTS:ObjectData>
+            </DTS:Executable>
+          </DTS:Executables>
+        </DTS:Executable>
+        <DTS:Executable
           DTS:refId="Package\Parent Container\LoadNAICSCodeHierDim_js"
           DTS:CreationName="Microsoft.ExecutePackageTask"
           DTS:Description="Execute Package Task"
@@ -1779,7 +2432,6 @@ ORDER BY 3,4,5;</DTS:VariableValue>
           DTS:refId="Package\Parent Container\Nums"
           DTS:CreationName="STOCK:SEQUENCE"
           DTS:Description="Sequence Container"
-          DTS:Disabled="True"
           DTS:DTSID="{10CF02CE-6491-47AB-B388-437B4E18243A}"
           DTS:ExecutableType="STOCK:SEQUENCE"
           DTS:LocaleID="-1"
@@ -1790,18 +2442,17 @@ ORDER BY 3,4,5;</DTS:VariableValue>
               DTS:refId="Package\Parent Container\Nums\Load Nums"
               DTS:CreationName="Microsoft.ExecuteSQLTask"
               DTS:Description="Execute SQL Task"
-              DTS:Disabled="True"
               DTS:DTSID="{66a54bdc-4b44-427f-9ed4-0664e3b07eda}"
               DTS:ExecutableType="Microsoft.ExecuteSQLTask"
               DTS:LocaleID="-1"
               DTS:ObjectName="Load Nums"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="0">
+              DTS:ThreadHint="1">
               <DTS:Variables />
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
                   SQLTask:Connection="{8161A392-70CE-4A16-929A-49777845BBB9}"
-                  SQLTask:SqlStatementSource="EXEC dbo.usp_Load_Nums 10;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+                  SQLTask:SqlStatementSource="EXEC dbo.usp_Load_Nums 100000;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
               </DTS:ObjectData>
             </DTS:Executable>
             <DTS:Executable
@@ -2058,7 +2709,7 @@ ORDER BY 3,4,5;</DTS:VariableValue>
                   DTS:LocaleID="-1"
                   DTS:ObjectName="Truncate Nums"
                   DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-                  DTS:ThreadHint="0">
+                  DTS:ThreadHint="2">
                   <DTS:Variables />
                   <DTS:ObjectData>
                     <SQLTask:SqlTaskData
@@ -9079,7 +9730,7 @@ ORDER BY 3,4,5;</DTS:VariableValue>
               DTS:LocaleID="-1"
               DTS:ObjectName="Truncate Data"
               DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="2">
+              DTS:ThreadHint="0">
               <DTS:Variables />
               <DTS:ObjectData>
                 <SQLTask:SqlTaskData
@@ -9111,629 +9762,6 @@ ORDER BY 3,4,5;</DTS:VariableValue>
               DTS:To="Package\Parent Container\Reload raw data flat-file\Foreach Loop Container" />
           </DTS:PrecedenceConstraints>
         </DTS:Executable>
-        <DTS:Executable
-          DTS:refId="Package\Parent Container\Sequence Container"
-          DTS:CreationName="STOCK:SEQUENCE"
-          DTS:Description="Sequence Container"
-          DTS:DTSID="{751367D0-91A4-4C74-87AD-21A61B47A2BD}"
-          DTS:ExecutableType="STOCK:SEQUENCE"
-          DTS:LocaleID="-1"
-          DTS:ObjectName="Sequence Container">
-          <DTS:Variables />
-          <DTS:Executables>
-            <DTS:Executable
-              DTS:refId="Package\Parent Container\Sequence Container\Foreach Loop Container"
-              DTS:CreationName="STOCK:FOREACHLOOP"
-              DTS:Description="Foreach Loop Container"
-              DTS:DTSID="{1E6A2256-EA5E-40BE-89AC-9E17E922DA6F}"
-              DTS:ExecutableType="STOCK:FOREACHLOOP"
-              DTS:LocaleID="-1"
-              DTS:ObjectName="Foreach Loop Container">
-              <DTS:ForEachEnumerator
-                DTS:CreationName="Microsoft.ForEachADOEnumerator"
-                DTS:DTSID="{E1B7ECF6-A9FA-4F18-9167-DBF3C0BDD70F}"
-                DTS:ObjectName="{E1B7ECF6-A9FA-4F18-9167-DBF3C0BDD70F}">
-                <DTS:ObjectData>
-                  <FEEADO
-                    EnumType="EnumerateRowsInFirstTable"
-                    VarName="User::o_tran_year" />
-                </DTS:ObjectData>
-              </DTS:ForEachEnumerator>
-              <DTS:Variables />
-              <DTS:Executables>
-                <DTS:Executable
-                  DTS:refId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task"
-                  DTS:CreationName="Microsoft.Pipeline"
-                  DTS:Description="Data Flow Task"
-                  DTS:DTSID="{B132C75F-D1FE-4895-ACB2-A4F89CAB06C7}"
-                  DTS:ExecutableType="Microsoft.Pipeline"
-                  DTS:LocaleID="-1"
-                  DTS:ObjectName="Data Flow Task"
-                  DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
-                  <DTS:Variables />
-                  <DTS:ObjectData>
-                    <pipeline
-                      version="1">
-                      <components>
-                        <component
-                          refId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\Flat File Destination"
-                          componentClassID="Microsoft.FlatFileDestination"
-                          contactInfo="Flat File Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
-                          description="Flat File Destination"
-                          localeId="1033"
-                          name="Flat File Destination"
-                          version="1">
-                          <properties>
-                            <property
-                              dataType="System.Boolean"
-                              description="Specifies whether the data will overwrite or append to the destination file."
-                              name="Overwrite">true</property>
-                            <property
-                              dataType="System.Null"
-                              description="Specifies the text to write to the destination file before any data is written."
-                              expressionType="Notify"
-                              name="Header" />
-                            <property
-                              dataType="System.Boolean"
-                              description="When text qualifier is enabled, specifies whether the text qualifier in the data written to the destination file will be escaped or not."
-                              name="EscapeQualifier">false</property>
-                          </properties>
-                          <connections>
-                            <connection
-                              refId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\Flat File Destination.Connections[FlatFileConnection]"
-                              connectionManagerID="Package.ConnectionManagers[BRANCH_TRAN_YYYY.txt]"
-                              connectionManagerRefId="Package.ConnectionManagers[BRANCH_TRAN_YYYY.txt]"
-                              name="FlatFileConnection" />
-                          </connections>
-                          <inputs>
-                            <input
-                              refId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\Flat File Destination.Inputs[Flat File Destination Input]"
-                              hasSideEffects="true"
-                              name="Flat File Destination Input">
-                              <inputColumns>
-                                <inputColumn
-                                  refId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\Flat File Destination.Inputs[Flat File Destination Input].Columns[branch_id]"
-                                  cachedDataType="i2"
-                                  cachedName="branch_id"
-                                  externalMetadataColumnId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[branch_id]"
-                                  lineageId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[branch_id]" />
-                                <inputColumn
-                                  refId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\Flat File Destination.Inputs[Flat File Destination Input].Columns[acct_id]"
-                                  cachedDataType="i4"
-                                  cachedName="acct_id"
-                                  externalMetadataColumnId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[acct_id]"
-                                  lineageId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[acct_id]" />
-                                <inputColumn
-                                  refId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\Flat File Destination.Inputs[Flat File Destination Input].Columns[tran_date]"
-                                  cachedDataType="dbDate"
-                                  cachedName="tran_date"
-                                  externalMetadataColumnId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[tran_date]"
-                                  lineageId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[tran_date]" />
-                                <inputColumn
-                                  refId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\Flat File Destination.Inputs[Flat File Destination Input].Columns[tran_time]"
-                                  cachedDataType="dbTime2"
-                                  cachedName="tran_time"
-                                  cachedScale="7"
-                                  externalMetadataColumnId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[tran_time]"
-                                  lineageId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[tran_time]" />
-                                <inputColumn
-                                  refId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\Flat File Destination.Inputs[Flat File Destination Input].Columns[tran_type_id]"
-                                  cachedDataType="i2"
-                                  cachedName="tran_type_id"
-                                  externalMetadataColumnId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[tran_type_id]"
-                                  lineageId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[tran_type_id]" />
-                                <inputColumn
-                                  refId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\Flat File Destination.Inputs[Flat File Destination Input].Columns[tran_type_code]"
-                                  cachedCodepage="1252"
-                                  cachedDataType="str"
-                                  cachedLength="5"
-                                  cachedName="tran_type_code"
-                                  externalMetadataColumnId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[tran_type_code]"
-                                  lineageId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[tran_type_code]" />
-                                <inputColumn
-                                  refId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\Flat File Destination.Inputs[Flat File Destination Input].Columns[tran_type_desc]"
-                                  cachedCodepage="1252"
-                                  cachedDataType="str"
-                                  cachedLength="100"
-                                  cachedName="tran_type_desc"
-                                  externalMetadataColumnId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[tran_type_desc]"
-                                  lineageId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[tran_type_desc]" />
-                                <inputColumn
-                                  refId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\Flat File Destination.Inputs[Flat File Destination Input].Columns[tran_fee_prct]"
-                                  cachedDataType="numeric"
-                                  cachedName="tran_fee_prct"
-                                  cachedPrecision="4"
-                                  cachedScale="3"
-                                  externalMetadataColumnId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[tran_fee_prct]"
-                                  lineageId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[tran_fee_prct]" />
-                                <inputColumn
-                                  refId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\Flat File Destination.Inputs[Flat File Destination Input].Columns[cur_cust_req_ind]"
-                                  cachedCodepage="1252"
-                                  cachedDataType="str"
-                                  cachedLength="1"
-                                  cachedName="cur_cust_req_ind"
-                                  externalMetadataColumnId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[cur_cust_req_ind]"
-                                  lineageId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[cur_cust_req_ind]" />
-                                <inputColumn
-                                  refId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\Flat File Destination.Inputs[Flat File Destination Input].Columns[tran_amt]"
-                                  cachedDataType="i4"
-                                  cachedName="tran_amt"
-                                  externalMetadataColumnId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[tran_amt]"
-                                  lineageId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[tran_amt]" />
-                                <inputColumn
-                                  refId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\Flat File Destination.Inputs[Flat File Destination Input].Columns[tran_fee_amt]"
-                                  cachedDataType="numeric"
-                                  cachedName="tran_fee_amt"
-                                  cachedPrecision="15"
-                                  cachedScale="3"
-                                  externalMetadataColumnId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[tran_fee_amt]"
-                                  lineageId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[tran_fee_amt]" />
-                              </inputColumns>
-                              <externalMetadataColumns
-                                isUsed="True">
-                                <externalMetadataColumn
-                                  refId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[branch_id]"
-                                  dataType="i2"
-                                  name="branch_id" />
-                                <externalMetadataColumn
-                                  refId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[acct_id]"
-                                  dataType="i4"
-                                  name="acct_id" />
-                                <externalMetadataColumn
-                                  refId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[tran_date]"
-                                  dataType="dbDate"
-                                  name="tran_date" />
-                                <externalMetadataColumn
-                                  refId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[tran_time]"
-                                  dataType="dbTime2"
-                                  name="tran_time"
-                                  scale="7" />
-                                <externalMetadataColumn
-                                  refId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[tran_type_id]"
-                                  dataType="i2"
-                                  name="tran_type_id" />
-                                <externalMetadataColumn
-                                  refId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[tran_type_code]"
-                                  codePage="1252"
-                                  dataType="str"
-                                  length="5"
-                                  name="tran_type_code" />
-                                <externalMetadataColumn
-                                  refId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[tran_type_desc]"
-                                  codePage="1252"
-                                  dataType="str"
-                                  length="100"
-                                  name="tran_type_desc" />
-                                <externalMetadataColumn
-                                  refId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[tran_fee_prct]"
-                                  dataType="numeric"
-                                  name="tran_fee_prct"
-                                  precision="4"
-                                  scale="3" />
-                                <externalMetadataColumn
-                                  refId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[cur_cust_req_ind]"
-                                  codePage="1252"
-                                  dataType="str"
-                                  length="1"
-                                  name="cur_cust_req_ind" />
-                                <externalMetadataColumn
-                                  refId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[tran_amt]"
-                                  dataType="i4"
-                                  name="tran_amt" />
-                                <externalMetadataColumn
-                                  refId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\Flat File Destination.Inputs[Flat File Destination Input].ExternalColumns[tran_fee_amt]"
-                                  dataType="numeric"
-                                  name="tran_fee_amt"
-                                  precision="15"
-                                  scale="3" />
-                              </externalMetadataColumns>
-                            </input>
-                          </inputs>
-                        </component>
-                        <component
-                          refId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\OLE DB Source"
-                          componentClassID="Microsoft.OLEDBSource"
-                          contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
-                          description="OLE DB Source"
-                          name="OLE DB Source"
-                          usesDispositions="true"
-                          version="7">
-                          <properties>
-                            <property
-                              dataType="System.Int32"
-                              description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
-                              name="CommandTimeout">0</property>
-                            <property
-                              dataType="System.String"
-                              description="Specifies the name of the database object used to open a rowset."
-                              name="OpenRowset"></property>
-                            <property
-                              dataType="System.String"
-                              description="Specifies the variable that contains the name of the database object used to open a rowset."
-                              name="OpenRowsetVariable"></property>
-                            <property
-                              dataType="System.String"
-                              description="The SQL command to be executed."
-                              name="SqlCommand"
-                              UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
-                            <property
-                              dataType="System.String"
-                              description="The variable that contains the SQL command to be executed."
-                              name="SqlCommandVariable">User::v_sql</property>
-                            <property
-                              dataType="System.Int32"
-                              description="Specifies the column code page to use when code page information is unavailable from the data source."
-                              name="DefaultCodePage">1252</property>
-                            <property
-                              dataType="System.Boolean"
-                              description="Forces the use of the DefaultCodePage property value when describing character data."
-                              name="AlwaysUseDefaultCodePage">false</property>
-                            <property
-                              dataType="System.Int32"
-                              description="Specifies the mode used to access the database."
-                              name="AccessMode"
-                              typeConverter="AccessMode">3</property>
-                            <property
-                              dataType="System.String"
-                              description="The mappings between the parameters in the SQL command and variables."
-                              name="ParameterMapping"></property>
-                          </properties>
-                          <connections>
-                            <connection
-                              refId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\OLE DB Source.Connections[OleDbConnection]"
-                              connectionManagerID="Package.ConnectionManagers[DFNB3]"
-                              connectionManagerRefId="Package.ConnectionManagers[DFNB3]"
-                              description="The OLE DB runtime connection used to access the database."
-                              name="OleDbConnection" />
-                          </connections>
-                          <outputs>
-                            <output
-                              refId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output]"
-                              name="OLE DB Source Output">
-                              <outputColumns>
-                                <outputColumn
-                                  refId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[branch_id]"
-                                  dataType="i2"
-                                  errorOrTruncationOperation="Conversion"
-                                  errorRowDisposition="FailComponent"
-                                  externalMetadataColumnId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[branch_id]"
-                                  lineageId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[branch_id]"
-                                  name="branch_id"
-                                  truncationRowDisposition="FailComponent" />
-                                <outputColumn
-                                  refId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[acct_id]"
-                                  dataType="i4"
-                                  errorOrTruncationOperation="Conversion"
-                                  errorRowDisposition="FailComponent"
-                                  externalMetadataColumnId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[acct_id]"
-                                  lineageId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[acct_id]"
-                                  name="acct_id"
-                                  truncationRowDisposition="FailComponent" />
-                                <outputColumn
-                                  refId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[tran_date]"
-                                  dataType="dbDate"
-                                  errorOrTruncationOperation="Conversion"
-                                  errorRowDisposition="FailComponent"
-                                  externalMetadataColumnId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[tran_date]"
-                                  lineageId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[tran_date]"
-                                  name="tran_date"
-                                  truncationRowDisposition="FailComponent" />
-                                <outputColumn
-                                  refId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[tran_time]"
-                                  dataType="dbTime2"
-                                  errorOrTruncationOperation="Conversion"
-                                  errorRowDisposition="FailComponent"
-                                  externalMetadataColumnId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[tran_time]"
-                                  lineageId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[tran_time]"
-                                  name="tran_time"
-                                  scale="7"
-                                  truncationRowDisposition="FailComponent" />
-                                <outputColumn
-                                  refId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[tran_type_id]"
-                                  dataType="i2"
-                                  errorOrTruncationOperation="Conversion"
-                                  errorRowDisposition="FailComponent"
-                                  externalMetadataColumnId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[tran_type_id]"
-                                  lineageId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[tran_type_id]"
-                                  name="tran_type_id"
-                                  truncationRowDisposition="FailComponent" />
-                                <outputColumn
-                                  refId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[tran_type_code]"
-                                  codePage="1252"
-                                  dataType="str"
-                                  errorOrTruncationOperation="Conversion"
-                                  errorRowDisposition="FailComponent"
-                                  externalMetadataColumnId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[tran_type_code]"
-                                  length="5"
-                                  lineageId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[tran_type_code]"
-                                  name="tran_type_code"
-                                  truncationRowDisposition="FailComponent" />
-                                <outputColumn
-                                  refId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[tran_type_desc]"
-                                  codePage="1252"
-                                  dataType="str"
-                                  errorOrTruncationOperation="Conversion"
-                                  errorRowDisposition="FailComponent"
-                                  externalMetadataColumnId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[tran_type_desc]"
-                                  length="100"
-                                  lineageId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[tran_type_desc]"
-                                  name="tran_type_desc"
-                                  truncationRowDisposition="FailComponent" />
-                                <outputColumn
-                                  refId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[tran_fee_prct]"
-                                  dataType="numeric"
-                                  errorOrTruncationOperation="Conversion"
-                                  errorRowDisposition="FailComponent"
-                                  externalMetadataColumnId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[tran_fee_prct]"
-                                  lineageId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[tran_fee_prct]"
-                                  name="tran_fee_prct"
-                                  precision="4"
-                                  scale="3"
-                                  truncationRowDisposition="FailComponent" />
-                                <outputColumn
-                                  refId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[cur_cust_req_ind]"
-                                  codePage="1252"
-                                  dataType="str"
-                                  errorOrTruncationOperation="Conversion"
-                                  errorRowDisposition="FailComponent"
-                                  externalMetadataColumnId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[cur_cust_req_ind]"
-                                  length="1"
-                                  lineageId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[cur_cust_req_ind]"
-                                  name="cur_cust_req_ind"
-                                  truncationRowDisposition="FailComponent" />
-                                <outputColumn
-                                  refId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[tran_amt]"
-                                  dataType="i4"
-                                  errorOrTruncationOperation="Conversion"
-                                  errorRowDisposition="FailComponent"
-                                  externalMetadataColumnId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[tran_amt]"
-                                  lineageId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[tran_amt]"
-                                  name="tran_amt"
-                                  truncationRowDisposition="FailComponent" />
-                                <outputColumn
-                                  refId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[tran_fee_amt]"
-                                  dataType="numeric"
-                                  errorOrTruncationOperation="Conversion"
-                                  errorRowDisposition="FailComponent"
-                                  externalMetadataColumnId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[tran_fee_amt]"
-                                  lineageId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[tran_fee_amt]"
-                                  name="tran_fee_amt"
-                                  precision="15"
-                                  scale="3"
-                                  truncationRowDisposition="FailComponent" />
-                              </outputColumns>
-                              <externalMetadataColumns
-                                isUsed="True">
-                                <externalMetadataColumn
-                                  refId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[branch_id]"
-                                  dataType="i2"
-                                  name="branch_id" />
-                                <externalMetadataColumn
-                                  refId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[acct_id]"
-                                  dataType="i4"
-                                  name="acct_id" />
-                                <externalMetadataColumn
-                                  refId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[tran_date]"
-                                  dataType="dbDate"
-                                  name="tran_date" />
-                                <externalMetadataColumn
-                                  refId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[tran_time]"
-                                  dataType="dbTime2"
-                                  name="tran_time"
-                                  scale="7" />
-                                <externalMetadataColumn
-                                  refId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[tran_type_id]"
-                                  dataType="i2"
-                                  name="tran_type_id" />
-                                <externalMetadataColumn
-                                  refId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[tran_type_code]"
-                                  codePage="1252"
-                                  dataType="str"
-                                  length="5"
-                                  name="tran_type_code" />
-                                <externalMetadataColumn
-                                  refId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[tran_type_desc]"
-                                  codePage="1252"
-                                  dataType="str"
-                                  length="100"
-                                  name="tran_type_desc" />
-                                <externalMetadataColumn
-                                  refId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[tran_fee_prct]"
-                                  dataType="numeric"
-                                  name="tran_fee_prct"
-                                  precision="4"
-                                  scale="3" />
-                                <externalMetadataColumn
-                                  refId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[cur_cust_req_ind]"
-                                  codePage="1252"
-                                  dataType="str"
-                                  length="1"
-                                  name="cur_cust_req_ind" />
-                                <externalMetadataColumn
-                                  refId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[tran_amt]"
-                                  dataType="i4"
-                                  name="tran_amt" />
-                                <externalMetadataColumn
-                                  refId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[tran_fee_amt]"
-                                  dataType="numeric"
-                                  name="tran_fee_amt"
-                                  precision="15"
-                                  scale="3" />
-                              </externalMetadataColumns>
-                            </output>
-                            <output
-                              refId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output]"
-                              isErrorOut="true"
-                              name="OLE DB Source Error Output">
-                              <outputColumns>
-                                <outputColumn
-                                  refId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[branch_id]"
-                                  dataType="i2"
-                                  lineageId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[branch_id]"
-                                  name="branch_id" />
-                                <outputColumn
-                                  refId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[acct_id]"
-                                  dataType="i4"
-                                  lineageId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[acct_id]"
-                                  name="acct_id" />
-                                <outputColumn
-                                  refId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[tran_date]"
-                                  dataType="dbDate"
-                                  lineageId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[tran_date]"
-                                  name="tran_date" />
-                                <outputColumn
-                                  refId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[tran_time]"
-                                  dataType="dbTime2"
-                                  lineageId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[tran_time]"
-                                  name="tran_time"
-                                  scale="7" />
-                                <outputColumn
-                                  refId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[tran_type_id]"
-                                  dataType="i2"
-                                  lineageId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[tran_type_id]"
-                                  name="tran_type_id" />
-                                <outputColumn
-                                  refId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[tran_type_code]"
-                                  codePage="1252"
-                                  dataType="str"
-                                  length="5"
-                                  lineageId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[tran_type_code]"
-                                  name="tran_type_code" />
-                                <outputColumn
-                                  refId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[tran_type_desc]"
-                                  codePage="1252"
-                                  dataType="str"
-                                  length="100"
-                                  lineageId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[tran_type_desc]"
-                                  name="tran_type_desc" />
-                                <outputColumn
-                                  refId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[tran_fee_prct]"
-                                  dataType="numeric"
-                                  lineageId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[tran_fee_prct]"
-                                  name="tran_fee_prct"
-                                  precision="4"
-                                  scale="3" />
-                                <outputColumn
-                                  refId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[cur_cust_req_ind]"
-                                  codePage="1252"
-                                  dataType="str"
-                                  length="1"
-                                  lineageId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[cur_cust_req_ind]"
-                                  name="cur_cust_req_ind" />
-                                <outputColumn
-                                  refId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[tran_amt]"
-                                  dataType="i4"
-                                  lineageId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[tran_amt]"
-                                  name="tran_amt" />
-                                <outputColumn
-                                  refId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[tran_fee_amt]"
-                                  dataType="numeric"
-                                  lineageId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[tran_fee_amt]"
-                                  name="tran_fee_amt"
-                                  precision="15"
-                                  scale="3" />
-                                <outputColumn
-                                  refId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
-                                  dataType="i4"
-                                  lineageId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
-                                  name="ErrorCode"
-                                  specialFlags="1" />
-                                <outputColumn
-                                  refId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
-                                  dataType="i4"
-                                  lineageId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
-                                  name="ErrorColumn"
-                                  specialFlags="2" />
-                              </outputColumns>
-                              <externalMetadataColumns />
-                            </output>
-                          </outputs>
-                        </component>
-                      </components>
-                      <paths>
-                        <path
-                          refId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task.Paths[OLE DB Source Output]"
-                          endId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\Flat File Destination.Inputs[Flat File Destination Input]"
-                          name="OLE DB Source Output"
-                          startId="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output]" />
-                      </paths>
-                    </pipeline>
-                  </DTS:ObjectData>
-                </DTS:Executable>
-                <DTS:Executable
-                  DTS:refId="Package\Parent Container\Sequence Container\Foreach Loop Container\File System Task"
-                  DTS:CreationName="Microsoft.FileSystemTask"
-                  DTS:Description="File System Task"
-                  DTS:DTSID="{4DD952C6-D11F-4CF1-8100-89F865AE3037}"
-                  DTS:ExecutableType="Microsoft.FileSystemTask"
-                  DTS:LocaleID="-1"
-                  DTS:ObjectName="File System Task"
-                  DTS:TaskContact="File System Task;Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-                  DTS:ThreadHint="3">
-                  <DTS:Variables />
-                  <DTS:ObjectData>
-                    <FileSystemData
-                      TaskOperationType="MoveFile"
-                      TaskOverwriteDestFile="True"
-                      TaskSourcePath="{113583A2-8ADF-45DD-8133-BA37033BE927}"
-                      TaskDestinationPath="User::v_archive_dir"
-                      TaskIsDestinationVariable="True" />
-                  </DTS:ObjectData>
-                </DTS:Executable>
-              </DTS:Executables>
-              <DTS:PrecedenceConstraints>
-                <DTS:PrecedenceConstraint
-                  DTS:refId="Package\Parent Container\Sequence Container\Foreach Loop Container.PrecedenceConstraints[Constraint]"
-                  DTS:CreationName=""
-                  DTS:DTSID="{E93BE066-2706-419B-BC94-570A545E5524}"
-                  DTS:From="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task"
-                  DTS:LogicalAnd="True"
-                  DTS:ObjectName="Constraint"
-                  DTS:To="Package\Parent Container\Sequence Container\Foreach Loop Container\File System Task" />
-              </DTS:PrecedenceConstraints>
-              <DTS:ForEachVariableMappings>
-                <DTS:ForEachVariableMapping
-                  DTS:CreationName=""
-                  DTS:DTSID="{46571E7E-1C39-4C72-A868-A9182C7AB4ED}"
-                  DTS:ObjectName="{46571E7E-1C39-4C72-A868-A9182C7AB4ED}"
-                  DTS:ValueIndex="0"
-                  DTS:VariableName="User::v_tran_year" />
-              </DTS:ForEachVariableMappings>
-            </DTS:Executable>
-            <DTS:Executable
-              DTS:refId="Package\Parent Container\Sequence Container\Tran Year list"
-              DTS:CreationName="Microsoft.ExecuteSQLTask"
-              DTS:Description="Execute SQL Task"
-              DTS:DTSID="{E191A78C-981A-44F1-BB90-F2C6B8F18795}"
-              DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-              DTS:LocaleID="-1"
-              DTS:ObjectName="Tran Year list"
-              DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-              DTS:ThreadHint="3">
-              <DTS:Variables />
-              <DTS:ObjectData>
-                <SQLTask:SqlTaskData
-                  SQLTask:Connection="{8161A392-70CE-4A16-929A-49777845BBB9}"
-                  SQLTask:SqlStatementSource="SELECT DISTINCT CAST(YEAR(s.tran_date) as varchar(4)) as v_tran_year&#xA;FROM dbo.stg_p2 s&#xA;ORDER BY 1;"
-                  SQLTask:ResultType="ResultSetType_Rowset" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
-                  <SQLTask:ResultBinding
-                    SQLTask:ResultName="0"
-                    SQLTask:DtsVariableName="User::o_tran_year" />
-                </SQLTask:SqlTaskData>
-              </DTS:ObjectData>
-            </DTS:Executable>
-          </DTS:Executables>
-          <DTS:PrecedenceConstraints>
-            <DTS:PrecedenceConstraint
-              DTS:refId="Package\Parent Container\Sequence Container.PrecedenceConstraints[Constraint]"
-              DTS:CreationName=""
-              DTS:DTSID="{DDF9B27B-1FF6-4649-90D9-46D1329F310A}"
-              DTS:From="Package\Parent Container\Sequence Container\Tran Year list"
-              DTS:LogicalAnd="True"
-              DTS:ObjectName="Constraint"
-              DTS:To="Package\Parent Container\Sequence Container\Foreach Loop Container" />
-          </DTS:PrecedenceConstraints>
-        </DTS:Executable>
       </DTS:Executables>
       <DTS:PrecedenceConstraints>
         <DTS:PrecedenceConstraint
@@ -9745,6 +9773,14 @@ ORDER BY 3,4,5;</DTS:VariableValue>
           DTS:ObjectName="Constraint"
           DTS:To="Package\Parent Container\Data Profiling Task" />
         <DTS:PrecedenceConstraint
+          DTS:refId="Package\Parent Container.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{A4EC8681-7D06-4A02-891F-CDCCD0FA8A2E}"
+          DTS:From="Package\Parent Container\Reload raw data flat-file"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\Parent Container\Nums" />
+        <DTS:PrecedenceConstraint
           DTS:refId="Package\Parent Container.PrecedenceConstraints[Constraint 2]"
           DTS:CreationName=""
           DTS:DTSID="{C96832AC-069D-437D-A98F-5BE61FED33E6}"
@@ -9752,6 +9788,22 @@ ORDER BY 3,4,5;</DTS:VariableValue>
           DTS:LogicalAnd="True"
           DTS:ObjectName="Constraint 2"
           DTS:To="Package\Parent Container\LoadNAICSCodeHierDim_js" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Parent Container.PrecedenceConstraints[Constraint 3]"
+          DTS:CreationName=""
+          DTS:DTSID="{8D85E2B8-4CC5-4912-88CC-6ABD60ACFD9C}"
+          DTS:From="Package\Parent Container\Reload raw data flat-file"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 3"
+          DTS:To="Package\Parent Container\Branch Tran File breakout" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Parent Container.PrecedenceConstraints[Constraint 4]"
+          DTS:CreationName=""
+          DTS:DTSID="{2D6917E7-CF6C-465C-819A-228B2692E30E}"
+          DTS:From="Package\Parent Container\Nums"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 4"
+          DTS:To="Package\Parent Container\Load dimensions" />
       </DTS:PrecedenceConstraints>
     </DTS:Executable>
     <DTS:Executable
@@ -10896,15 +10948,15 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
           PanelSize="616,276"
           Size="172.8,43.2"
           Id="Package\Documentation"
-          TopLeft="122.3,827.1" />
+          TopLeft="143.1,623.1" />
         <NodeLayout
           Size="166.4,41.6"
           Id="Package\Parent Container\Data Profiling Task"
-          TopLeft="196.1,314.3" />
+          TopLeft="5.50000000000004,109.5" />
         <NodeLayout
           Size="208.8,41.6"
           Id="Package\Parent Container\LoadNAICSCodeHierDim_js"
-          TopLeft="422.9,314.3" />
+          TopLeft="232.3,109.5" />
         <NodeLayout
           Size="131.2,41.6"
           Id="Package\Parent Container\Nums\Load Nums"
@@ -10936,15 +10988,13 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="171.2,204.2"
+          PanelSize="171.2,204"
           Size="171.2,247.2"
           Id="Package\Parent Container\Nums\Reload Nums - ADO"
           TopLeft="237.5,107.1" />
@@ -10975,15 +11025,13 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="171.2,204.2"
+          PanelSize="171.2,204"
           Size="171.2,247.2"
           Id="Package\Parent Container\Nums\Reload Nums - OLE_DB"
           TopLeft="5.50000000000006,107.1" />
@@ -11065,7 +11113,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
           PanelSize="414.4,409.6"
           Size="129.6,43.2"
           Id="Package\Parent Container\Nums"
-          TopLeft="5.49999999999996,313.5" />
+          TopLeft="501.9,108.7" />
         <NodeLayout
           Size="166.4,41.6"
           Id="Package\Parent Container\Reload raw data flat-file\Foreach Loop Container\Iteration Load Data"
@@ -11163,17 +11211,17 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
           PanelSize="374.4,308"
           Size="211.2,43.2"
           Id="Package\Parent Container\Reload raw data flat-file"
-          TopLeft="421.7,5.49999999999991" />
+          TopLeft="461.1,5.49999999999991" />
         <NodeLayout
           Size="150.4,41.6"
-          Id="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task"
+          Id="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task"
           TopLeft="9.50000000000001,5.49999999999995" />
         <NodeLayout
           Size="158.4,41.6"
-          Id="Package\Parent Container\Sequence Container\Foreach Loop Container\File System Task"
+          Id="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\File System Task"
           TopLeft="5.50000000000001,107.1" />
         <EdgeLayout
-          Id="Package\Parent Container\Sequence Container\Foreach Loop Container.PrecedenceConstraints[Constraint]"
+          Id="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container.PrecedenceConstraints[Constraint]"
           TopLeft="84.7,47.1">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -11199,14 +11247,14 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
           IsExpanded="True"
           PanelSize="169.6,204"
           Size="169.6,247.2"
-          Id="Package\Parent Container\Sequence Container\Foreach Loop Container"
+          Id="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container"
           TopLeft="5.50000000000004,107.1" />
         <NodeLayout
           Size="140,41.6"
-          Id="Package\Parent Container\Sequence Container\Tran Year list"
+          Id="Package\Parent Container\Branch Tran File breakout\Tran Year list"
           TopLeft="20.3,5.49999999999995" />
         <EdgeLayout
-          Id="Package\Parent Container\Sequence Container.PrecedenceConstraints[Constraint]"
+          Id="Package\Parent Container\Branch Tran File breakout.PrecedenceConstraints[Constraint]"
           TopLeft="90.3,47.1">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -11229,37 +11277,37 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
         </EdgeLayout>
         <ContainerLayout
           HeaderHeight="43"
-          IsExpanded="True"
+          IsExpanded="False"
           PanelSize="180.8,409.6"
-          Size="180.8,452.8"
-          Id="Package\Parent Container\Sequence Container"
-          TopLeft="691.9,108.7" />
+          Size="222.4,43.2"
+          Id="Package\Parent Container\Branch Tran File breakout"
+          TopLeft="692.5,108.7" />
         <EdgeLayout
           Id="Package\Parent Container.PrecedenceConstraints[Constraint]"
-          TopLeft="493.433333333333,48.6999999999999">
+          TopLeft="505.74,48.6999999999999">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-214.133333333333,265.6"
+              EndConnector="-417.04,60.8000000000002"
               Start="0,0"
-              End="-214.133333333333,258.1">
+              End="-417.04,53.3000000000002">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,103.438195488722" />
+                    End="0,14.0651757188499" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,103.438195488722"
-                    Point2="0,107.438195488722"
-                    Point3="-4,107.438195488722" />
+                    Point1="0,14.0651757188499"
+                    Point2="0,18.0651757188499"
+                    Point3="-4,18.0651757188499" />
                   <mssgle:LineSegment
-                    End="-210.133333333333,107.438195488722" />
+                    End="-413.04,18.0651757188499" />
                   <mssgle:CubicBezierSegment
-                    Point1="-210.133333333333,107.438195488722"
-                    Point2="-214.133333333333,107.438195488722"
-                    Point3="-214.133333333333,111.438195488722" />
+                    Point1="-413.04,18.0651757188499"
+                    Point2="-417.04,18.0651757188499"
+                    Point3="-417.04,22.0651757188499" />
                   <mssgle:LineSegment
-                    End="-214.133333333333,258.1" />
+                    End="-417.04,53.3000000000002" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -11270,30 +11318,131 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Parent Container.PrecedenceConstraints[Constraint 2]"
-          TopLeft="561.166666666667,48.6999999999999">
+          TopLeft="546.38,48.6999999999999">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-33.8666666666666,265.6"
+              EndConnector="-209.68,60.8000000000002"
               Start="0,0"
-              End="-33.8666666666666,258.1">
+              End="-209.68,53.3000000000002">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,103.438195488722" />
+                    End="0,23.1637887678123" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,103.438195488722"
-                    Point2="0,107.438195488722"
-                    Point3="-4,107.438195488722" />
+                    Point1="0,23.1637887678123"
+                    Point2="0,27.1637887678123"
+                    Point3="-4,27.1637887678123" />
                   <mssgle:LineSegment
-                    End="-29.8666666666666,107.438195488722" />
+                    End="-205.68,27.1637887678123" />
                   <mssgle:CubicBezierSegment
-                    Point1="-29.8666666666666,107.438195488722"
-                    Point2="-33.8666666666666,107.438195488722"
-                    Point3="-33.8666666666666,111.438195488722" />
+                    Point1="-205.68,27.1637887678123"
+                    Point2="-209.68,27.1637887678123"
+                    Point3="-209.68,31.1637887678123" />
                   <mssgle:LineSegment
-                    End="-33.8666666666666,258.1" />
+                    End="-209.68,53.3000000000002" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Parent Container.PrecedenceConstraints[Constraint 1]"
+          TopLeft="587.02,48.6999999999999">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-20.3199999999999,60.0000000000001"
+              Start="0,0"
+              End="-20.3199999999999,52.5000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.8063704945516" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,22.8063704945516"
+                    Point2="0,26.8063704945516"
+                    Point3="-4,26.8063704945516" />
+                  <mssgle:LineSegment
+                    End="-16.3199999999999,26.8063704945516" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-16.3199999999999,26.8063704945516"
+                    Point2="-20.3199999999999,26.8063704945516"
+                    Point3="-20.3199999999999,30.8063704945516" />
+                  <mssgle:LineSegment
+                    End="-20.3199999999999,52.5000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Parent Container.PrecedenceConstraints[Constraint 3]"
+          TopLeft="627.66,48.6999999999999">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="176.04,60.0000000000001"
+              Start="0,0"
+              End="176.04,52.5000000000001">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,13.8274760383387" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,13.8274760383387"
+                    Point2="0,17.8274760383387"
+                    Point3="4,17.8274760383387" />
+                  <mssgle:LineSegment
+                    End="172.04,17.8274760383387" />
+                  <mssgle:CubicBezierSegment
+                    Point1="172.04,17.8274760383387"
+                    Point2="176.04,17.8274760383387"
+                    Point3="176.04,21.8274760383387" />
+                  <mssgle:LineSegment
+                    End="176.04,52.5000000000001" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="147.2,41.6"
+          Id="Package\Parent Container\Load dimensions\Load Date Dim"
+          TopLeft="5.5,5.49999999999995" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="158.4,102.4"
+          Size="158.4,145.6"
+          Id="Package\Parent Container\Load dimensions"
+          TopLeft="487.5,211.9" />
+        <EdgeLayout
+          Id="Package\Parent Container.PrecedenceConstraints[Constraint 4]"
+          TopLeft="566.7,151.9">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59.9999999999999"
+              Start="0,0"
+              End="0,52.4999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.4999999999999" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -11305,21 +11454,21 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
-          PanelSize="878.4,616.8"
-          Size="878.4,660"
+          PanelSize="920,412.8"
+          Size="920,456"
           Id="Package\Parent Container"
-          TopLeft="5.50000000000011,107.1" />
+          TopLeft="5.50000000000006,107.1" />
         <NodeLayout
           Size="178.4,41.6"
           Id="Package\SQL LogPackageEnd"
-          TopLeft="355.5,827.9" />
+          TopLeft="376.3,623.9" />
         <NodeLayout
           Size="181.6,41.6"
           Id="Package\SQL LogPackageStart"
-          TopLeft="353.9,5.49999999999995" />
+          TopLeft="374.7,5.49999999999995" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="444.7,47.1">
+          TopLeft="465.5,47.1">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -11341,7 +11490,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 1]"
-          TopLeft="444.7,767.1">
+          TopLeft="465.5,563.1">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
@@ -11799,20 +11948,20 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
     </Properties>
   </PipelineComponentMetadata>
   <TaskHost
-    design-time-name="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task">
+    design-time-name="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task">
     <LayoutInfo>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="152,41.6"
-          Id="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\OLE DB Source"
+          Id="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\OLE DB Source"
           TopLeft="14.7,5.49999999999995" />
         <NodeLayout
           Size="170.4,41.6"
-          Id="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\Flat File Destination"
+          Id="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\Flat File Destination"
           TopLeft="5.50000000000001,107.1" />
         <EdgeLayout
-          Id="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task.Paths[OLE DB Source Output]"
+          Id="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task.Paths[OLE DB Source Output]"
           TopLeft="90.7,47.1">
           <EdgeLayout.Curve>
             <mssgle:Curve
@@ -11837,7 +11986,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Parent Container\Sequence Container\Foreach Loop Container\Data Flow Task\OLE DB Source">
+    design-time-name="Package\Parent Container\Branch Tran File breakout\Foreach Loop Container\Data Flow Task\OLE DB Source">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
